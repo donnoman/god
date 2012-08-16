@@ -55,6 +55,7 @@ module God
         valid
       end
 
+
       def process(event, payload)
         begin
           if event == :state_change
@@ -72,6 +73,7 @@ module God
               if concensus && duration
                 @timeline.clear
                 trigger
+                self.watch.move(:unmonitored)
                 retry_mechanism
               end
             end
